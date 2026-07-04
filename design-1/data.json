@@ -1,0 +1,45 @@
+{
+  "brand": "Dusk RVA",
+  "menu": [
+    {
+      "category": "Shisha Flavors",
+      "accent": "primary",
+      "layout": "list",
+      "items": [
+        { "name": "Double Apple", "description": "Classic anise-apple, deep & smooth", "price": "$18", "special": false },
+        { "name": "Mint Blast", "description": "Ice-cold, clean finish", "price": "$18", "special": false },
+        { "name": "Blue Mist", "description": "Blueberry & mint", "price": "$20", "special": false },
+        { "name": "Watermelon Chill", "description": "Juicy, sweet, refreshing", "price": "$20", "special": false },
+        { "name": "Signature House Blend", "description": "Our secret rotating mix", "price": "$28", "special": true, "badge": "HOUSE" }
+      ]
+    },
+    {
+      "category": "Drinks & Tea",
+      "accent": "gold",
+      "layout": "list",
+      "items": [
+        { "name": "Moroccan Mint Tea", "description": "Fresh mint, served in a pot", "price": "$6", "special": false },
+        { "name": "Turkish Coffee", "description": "Rich, cardamom-spiced", "price": "$7", "special": false },
+        { "name": "Virgin Mojito", "description": "Lime, mint, soda", "price": "$9", "special": false },
+        { "name": "Passionfruit Cooler", "description": "Tropical & tangy", "price": "$10", "special": false },
+        { "name": "Fresh Lemonade", "description": "Hand-squeezed daily", "price": "$6", "special": false }
+      ]
+    }
+  ],
+  "hours": [
+    { "days": "Mon – Thu", "time": "5 PM – 1 AM", "highlight": false },
+    { "days": "Fri – Sat", "time": "5 PM – 3 AM", "highlight": true },
+    { "days": "Sunday", "time": "5 PM – 12 AM", "highlight": false }
+  ],
+  "location": {
+    "name": "Dusk RVA",
+    "addressLines": ["123 W Broad St", "Richmond, VA 23220"],
+    "mapsQuery": "Dusk RVA, 123 W Broad St, Richmond, VA 23220"
+  },
+  "contact": {
+    "reserveNote": "Call or text us to reserve a table",
+    "phoneDisplay": "(804) 555-0100",
+    "phoneDial": "+18045550100",
+    "email": "hello@duskrva.com"
+  }
+}

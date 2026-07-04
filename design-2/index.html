@@ -412,6 +412,44 @@
   *{box-sizing:border-box;}
   body{margin:0;background:#0b0910;min-height:100vh;display:flex;justify-content:center;padding:56px 24px;font-family:'Space Grotesk',sans-serif;}
   .frame{width:1080px;max-width:100%;}
+
+  /* ---- interaction ---- */
+  html{scroll-behavior:smooth;}
+  a{color:inherit;text-decoration:none;}
+  [id]{scroll-margin-top:24px;}
+  .btn{cursor:pointer;display:inline-block;transition:transform .15s ease,filter .15s ease;}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.07);}
+  .contact-link{transition:color .15s ease;}
+  .contact-link:hover{color:#fff;}
+
+  /* ---- nav ---- */
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;position:relative;flex-wrap:wrap;}
+  .brand-name{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;color:#f4eee6;}
+  .nav-links{display:flex;align-items:center;gap:12px;}
+  .nav-link{padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.05);font-size:14px;color:#c4bdd0;cursor:pointer;transition:.15s;}
+  .nav-link:hover{background:rgba(255,255,255,.1);color:#f4eee6;}
+  .btn-reserve{padding:9px 20px;background:#35e0d0;color:#0a1413;border-radius:999px;font-weight:700;font-family:'Unbounded',sans-serif;font-size:13px;}
+  .nav-toggle{display:none;}
+  .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+  .nav-burger span{width:24px;height:2px;background:#f4eee6;border-radius:2px;transition:.2s;}
+
+  /* ---- responsive ---- */
+  @media (max-width:760px){
+    body{padding:16px 10px !important;}
+    .nav{padding:18px 22px;}
+    .nav-burger{display:flex;}
+    .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;gap:10px;margin-top:16px;}
+    .nav-toggle:checked ~ .nav-links{display:flex;}
+    .nav-link{text-align:center;}
+    .btn-reserve{text-align:center;}
+    .hero-outer{padding:16px !important;}
+    .hero{padding:44px 24px !important;}
+    .hero h1{font-size:40px !important;}
+    .hero-photo{position:static !important;width:100% !important;height:200px !important;margin-top:26px;right:auto !important;top:auto !important;}
+    .menu-grid{grid-template-columns:1fr !important;}
+    .info-grid{grid-template-columns:1fr !important;}
+    .section-pad{padding-left:22px !important;padding-right:22px !important;}
+  }
 </style>
 </head>
 <body>
@@ -422,19 +460,21 @@
     <div style="border-radius:20px; overflow:hidden; background:#100e16; box-shadow:0 40px 100px rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.06);">
 
       <!-- nav -->
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 40px;">
-        <span style="font-family:'Unbounded',sans-serif; font-weight:700; font-size:20px; color:#f4eee6;">HAZE</span>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="padding:9px 16px; border-radius:999px; background:rgba(255,255,255,.05); font-size:14px; color:#c4bdd0;">Menu</span>
-          <span style="padding:9px 16px; border-radius:999px; background:rgba(255,255,255,.05); font-size:14px; color:#c4bdd0;">Hours</span>
-          <span style="padding:9px 16px; border-radius:999px; background:rgba(255,255,255,.05); font-size:14px; color:#c4bdd0;">Location</span>
-          <span style="padding:9px 20px; background:#35e0d0; color:#0a1413; border-radius:999px; font-weight:700; font-family:'Unbounded',sans-serif; font-size:13px;">Reserve</span>
-        </div>
-      </div>
+      <header class="nav" id="top">
+        <a class="brand" href="#top"><span class="brand-name">Dusk <span style="color:#35e0d0;">RVA</span></span></a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+        <nav class="nav-links">
+          <a class="nav-link" href="#menu">Menu</a>
+          <a class="nav-link" href="#hours">Hours</a>
+          <a class="nav-link" href="#location">Location</a>
+          <a class="btn btn-reserve" href="#location">Reserve</a>
+        </nav>
+      </header>
 
       <!-- hero -->
-      <div style="position:relative; padding:40px; overflow:hidden;">
-        <div style="position:relative; border-radius:24px; padding:70px 56px; background:linear-gradient(135deg,#1b0f2e 0%,#151021 55%,#0f1a1e 100%); overflow:hidden; border:1px solid rgba(255,255,255,.08);">
+      <div class="hero-outer" style="position:relative; padding:40px; overflow:hidden;">
+        <div class="hero" style="position:relative; border-radius:24px; padding:70px 56px; background:linear-gradient(135deg,#1b0f2e 0%,#151021 55%,#0f1a1e 100%); overflow:hidden; border:1px solid rgba(255,255,255,.08);">
           <div style="position:absolute; top:-100px; left:-40px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle, rgba(53,224,208,.3), transparent 65%);"></div>
           <div style="position:absolute; bottom:-120px; right:-40px; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(201,162,75,.28), transparent 65%);"></div>
           <div style="position:relative;">
@@ -445,67 +485,86 @@
             <h1 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:66px; line-height:1.02; letter-spacing:-.01em; margin:0; color:#f7f2ea;">Your<br>night<br>starts <span style="color:#35e0d0;">here.</span></h1>
             <p style="font-size:18px; line-height:1.6; color:#b7afc0; max-width:440px; margin:26px 0 34px;">Big flavors, bigger vibes. Grab your crew, pick a flavor, and settle into the best seat in the city.</p>
             <div style="display:flex; gap:14px; flex-wrap:wrap;">
-              <span style="padding:16px 32px; background:#35e0d0; color:#0a1413; border-radius:14px; font-family:'Unbounded',sans-serif; font-weight:700; font-size:15px;">Explore Menu</span>
-              <span style="padding:16px 32px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); color:#f4eee6; border-radius:14px; font-weight:700; font-size:15px;">Reserve a Table</span>
+              <a class="btn" href="#menu" style="padding:16px 32px; background:#35e0d0; color:#0a1413; border-radius:14px; font-family:'Unbounded',sans-serif; font-weight:700; font-size:15px;">Explore Menu</a>
+              <a class="btn" href="#location" style="padding:16px 32px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); color:#f4eee6; border-radius:14px; font-weight:700; font-size:15px;">Reserve a Table</a>
             </div>
           </div>
-          <div style="position:absolute; right:46px; top:56px; width:230px; height:290px; border-radius:18px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.1);">
+          <div class="hero-photo" style="position:absolute; right:46px; top:56px; width:230px; height:290px; border-radius:18px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.1);">
             <img src="assets/8fda12b4-65d3-44ef-979e-71135bcbe9b2.jpg" alt="Hookah in candlelight" style="width:100%; height:100%; object-fit:cover; display:block;">
           </div>
         </div>
       </div>
 
       <!-- MENU -->
-      <div style="padding:24px 40px 56px;">
+      <div id="menu" class="section-pad" style="padding:24px 40px 56px;">
         <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:30px;">
           <h2 style="font-family:'Unbounded',sans-serif; font-weight:700; font-size:40px; color:#f4eee6; margin:0;">Menu</h2>
-          <span style="font-size:13px; color:#7a7288; font-family:monospace;">// placeholder — edit anytime</span>
         </div>
-
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;"><span style="font-family:'Unbounded',sans-serif; font-size:13px; font-weight:700; letter-spacing:.1em; color:#35e0d0;">SHISHA FLAVORS</span><div style="flex:1; height:1px; background:rgba(255,255,255,.1);"></div></div>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:44px;">
-          <div style="padding:22px; border-radius:16px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:#f4eee6;">Double Apple</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:15px;">$18</span></div><p style="font-size:13px; color:#8f879c; margin:8px 0 0;">Classic anise-apple, deep &amp; smooth</p></div>
-          <div style="padding:22px; border-radius:16px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:#f4eee6;">Mint Blast</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:15px;">$18</span></div><p style="font-size:13px; color:#8f879c; margin:8px 0 0;">Ice-cold, clean finish</p></div>
-          <div style="padding:22px; border-radius:16px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:#f4eee6;">Blue Mist</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:15px;">$20</span></div><p style="font-size:13px; color:#8f879c; margin:8px 0 0;">Blueberry &amp; mint</p></div>
-          <div style="padding:22px; border-radius:16px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:#f4eee6;">Watermelon Chill</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:15px;">$20</span></div><p style="font-size:13px; color:#8f879c; margin:8px 0 0;">Juicy, sweet, refreshing</p></div>
-          <div style="padding:22px; border-radius:16px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:#f4eee6;">Grape &amp; Mint</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:15px;">$19</span></div><p style="font-size:13px; color:#8f879c; margin:8px 0 0;">Sweet grape, cool exhale</p></div>
-          <div style="padding:22px; border-radius:16px; background:linear-gradient(135deg,rgba(53,224,208,.12),rgba(201,162,75,.1)); border:1px solid rgba(53,224,208,.3);"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:#f4eee6;">House Blend <span style="font-size:10px; color:#0a1413; background:#35e0d0; padding:2px 7px; border-radius:999px; font-weight:800;">HOUSE</span></span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:15px;">$28</span></div><p style="font-size:13px; color:#a99fb5; margin:8px 0 0;">Our secret rotating mix</p></div>
-        </div>
-
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;"><span style="font-family:'Unbounded',sans-serif; font-size:13px; font-weight:700; letter-spacing:.1em; color:#e0c37f;">DRINKS &amp; TEA</span><div style="flex:1; height:1px; background:rgba(255,255,255,.1);"></div></div>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:#e9e3ee;">Moroccan Mint Tea</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:14px;">$6</span></div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:#e9e3ee;">Turkish Coffee</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:14px;">$7</span></div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:#e9e3ee;">Virgin Mojito</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:14px;">$9</span></div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:#e9e3ee;">Passionfruit Cooler</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:14px;">$10</span></div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:#e9e3ee;">Fresh Lemonade</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:14px;">$6</span></div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:#e9e3ee;">Sparkling Water</span><span style="font-family:'Unbounded',sans-serif; font-weight:700; color:#c9a24b; font-size:14px;">$4</span></div>
-        </div>
+        <div id="menu-body"></div>
       </div>
 
       <!-- HOURS & LOCATION -->
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:0 40px 40px;">
-        <div style="padding:36px; border-radius:18px; background:linear-gradient(135deg,#161a24,#111017);">
+      <div class="info-grid section-pad" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:0 40px 40px;">
+        <div id="hours" style="padding:36px; border-radius:18px; background:linear-gradient(135deg,#161a24,#111017);">
           <h3 style="font-family:'Unbounded',sans-serif; font-weight:700; font-size:20px; color:#35e0d0; margin:0 0 22px;">Hours</h3>
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="display:flex; justify-content:space-between; font-size:15px;"><span style="color:#b7afc0;">Mon – Thu</span><span style="color:#f4eee6; font-weight:700;">5 PM – 1 AM</span></div>
-            <div style="display:flex; justify-content:space-between; font-size:15px;"><span style="color:#b7afc0;">Fri – Sat</span><span style="color:#35e0d0; font-weight:700;">5 PM – 3 AM</span></div>
-            <div style="display:flex; justify-content:space-between; font-size:15px;"><span style="color:#b7afc0;">Sunday</span><span style="color:#f4eee6; font-weight:700;">5 PM – 12 AM</span></div>
-          </div>
+          <div id="hours-list" style="display:flex; flex-direction:column; gap:14px;"></div>
         </div>
-        <div style="padding:36px; border-radius:18px; background:linear-gradient(135deg,#1e1826,#141019);">
+        <div id="location" style="padding:36px; border-radius:18px; background:linear-gradient(135deg,#1e1826,#141019);">
           <h3 style="font-family:'Unbounded',sans-serif; font-weight:700; font-size:20px; color:#e0c37f; margin:0 0 22px;">Find Us</h3>
-          <p style="font-size:15px; line-height:1.6; color:#b7afc0; margin:0 0 16px;">123 Placeholder Avenue<br>Downtown District, City 00000</p>
-          <div style="display:flex; flex-direction:column; gap:6px; font-size:15px; color:#e9e3ee;">
-            <span>(555) 000-0000</span>
-            <span>hello@hazelounge.com</span>
-          </div>
+          <div id="location-body"></div>
         </div>
       </div>
 
-      <div style="padding:22px 40px; text-align:center; font-size:13px; color:#6c6479; border-top:1px solid rgba(255,255,255,.06);">© 2026 HAZE Lounge · Must be 21+ with valid ID</div>
+      <div style="padding:22px 40px; text-align:center; font-size:13px; color:#6c6479; border-top:1px solid rgba(255,255,255,.06);">© 2026 Dusk RVA · Must be 21+ with valid ID</div>
     </div>
   
 </div>
+<script>
+(function(){
+  var T={accent:'#35e0d0',goldSoft:'#e0c37f',price:'#c9a24b',text:'#f4eee6',muted:'#8f879c',contact:'#e9e3ee',onAccent:'#0a1413'};
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function mapHref(q){var query=encodeURIComponent(q);var apple=/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent||'');return apple?'https://maps.apple.com/?q='+query:'https://www.google.com/maps/search/?api=1&query='+query;}
+  function card(it){
+    var badge=it.special?' <span style="font-size:10px; color:'+T.onAccent+'; background:'+T.accent+'; padding:2px 7px; border-radius:999px; font-weight:800;">'+esc(it.badge||'HOUSE')+'</span>':'';
+    var bg=it.special?'linear-gradient(135deg,rgba(53,224,208,.12),rgba(201,162,75,.1))':'rgba(255,255,255,.03)';
+    var bd=it.special?'rgba(53,224,208,.3)':'rgba(255,255,255,.07)';
+    var dc=it.special?'#a99fb5':'#8f879c';
+    var desc=it.description?'<p style="font-size:13px; color:'+dc+'; margin:8px 0 0;">'+esc(it.description)+'</p>':'';
+    return '<div style="padding:22px; border-radius:16px; background:'+bg+'; border:1px solid '+bd+';"><div style="display:flex; justify-content:space-between; align-items:start; gap:10px;"><span style="font-weight:700; font-size:17px; color:'+T.text+';">'+esc(it.name)+badge+'</span><span style="font-family:\'Unbounded\',sans-serif; font-weight:700; color:'+T.price+'; font-size:15px;">'+esc(it.price)+'</span></div>'+desc+'</div>';
+  }
+  function row(it){
+    return '<div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 20px; border-radius:12px; background:rgba(255,255,255,.03);"><span style="font-weight:500; font-size:15px; color:'+T.contact+';">'+esc(it.name)+'</span><span style="font-family:\'Unbounded\',sans-serif; font-weight:700; color:'+T.price+'; font-size:14px;">'+esc(it.price)+'</span></div>';
+  }
+  function section(cat,last){
+    var head=cat.accent==='gold'?T.goldSoft:T.accent;
+    var label='<div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;"><span style="font-family:\'Unbounded\',sans-serif; font-size:13px; font-weight:700; letter-spacing:.1em; color:'+head+';">'+esc(String(cat.category).toUpperCase())+'</span><div style="flex:1; height:1px; background:rgba(255,255,255,.1);"></div></div>';
+    var mb=last?'':' margin-bottom:44px;';
+    var body;
+    if(cat.layout==='rows'){body='<div class="menu-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;'+mb+'">'+cat.items.map(row).join('')+'</div>';}
+    else{body='<div class="menu-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;'+mb+'">'+cat.items.map(card).join('')+'</div>';}
+    return label+body;
+  }
+  function render(d){
+    var mb=document.getElementById('menu-body');
+    if(mb&&d.menu)mb.innerHTML=d.menu.map(function(c,i){return section(c,i===d.menu.length-1);}).join('');
+    var hl=document.getElementById('hours-list');
+    if(hl&&d.hours)hl.innerHTML=d.hours.map(function(h){return '<div style="display:flex; justify-content:space-between; font-size:15px;"><span style="color:#b7afc0;">'+esc(h.days)+'</span><span style="color:'+(h.highlight?T.accent:T.text)+'; font-weight:700;">'+esc(h.time)+'</span></div>';}).join('');
+    var lb=document.getElementById('location-body');
+    if(lb){
+      var loc=d.location||{},c=d.contact||{};
+      var addr=(loc.addressLines||[]).map(esc).join('<br>');
+      var href=mapHref(loc.mapsQuery||(loc.addressLines||[]).join(', '));
+      var s='<a class="contact-link" href="'+href+'" target="_blank" rel="noopener" style="display:block; font-size:15px; line-height:1.6; color:#b7afc0; margin:0 0 16px;">'+addr+'</a>';
+      if(c.reserveNote)s+='<p style="font-size:15px; line-height:1.6; color:'+T.text+'; font-weight:700; margin:0 0 12px;">'+esc(c.reserveNote)+'</p>';
+      s+='<div style="display:flex; flex-direction:column; gap:6px; font-size:15px; color:'+T.contact+';">';
+      if(c.phoneDial)s+='<a class="contact-link" href="tel:'+esc(c.phoneDial)+'">'+esc(c.phoneDisplay||c.phoneDial)+'</a>';
+      if(c.email)s+='<a class="contact-link" href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>';
+      s+='</div>';
+      lb.innerHTML=s;
+    }
+  }
+  fetch('data.json').then(function(r){return r.json();}).then(render).catch(function(e){console.error('Could not load data.json',e);});
+})();
+</script>
 </body>
 </html>
