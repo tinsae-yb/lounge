@@ -31,6 +31,10 @@
     { "days": "Fri – Sat", "time": "5 PM – 3 AM", "highlight": true },
     { "days": "Sunday", "time": "5 PM – 12 AM", "highlight": false }
   ],
+  "policies": [
+    "Must be 21+ with valid ID",
+    "No outside drinks allowed"
+  ],
   "location": {
     "name": "Dusk RVA",
     "addressLines": ["123 W Broad St", "Richmond, VA 23220"],
@@ -40,6 +44,6 @@
     "reserveNote": "Call or text us to reserve a table",
     "phoneDisplay": "(804) 555-0100",
     "phoneDial": "+18045550100",
-    "email": "hello@duskrva.com"
+    "email": "duskrva@duskloungerva.com"
   }
 }

@@ -516,7 +516,10 @@
         </div>
       </div>
 
-      <div style="padding:22px 40px; text-align:center; font-size:13px; color:#6c6479; border-top:1px solid rgba(255,255,255,.06);">© 2026 Dusk RVA · Must be 21+ with valid ID</div>
+      <!-- POLICIES -->
+      <div id="policies" style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:28px 40px; border-top:1px solid rgba(255,255,255,.06);"></div>
+
+      <div style="padding:22px 40px; text-align:center; font-size:13px; color:#6c6479; border-top:1px solid rgba(255,255,255,.06);">© 2026 Dusk RVA</div>
     </div>
   
 </div>
@@ -553,6 +556,8 @@
     if(mg&&d.menu)mg.innerHTML=d.menu.map(column).join('');
     var hl=document.getElementById('hours-list');
     if(hl&&d.hours)hl.innerHTML=d.hours.map(function(h){return '<div style="display:flex; justify-content:space-between; font-size:16px;"><span style="color:#b7afc0;">'+esc(h.days)+'</span><span style="color:'+(h.highlight?T.accentSoft:T.text)+'; font-weight:700;">'+esc(h.time)+'</span></div>';}).join('');
+    var pol=document.getElementById('policies');
+    if(pol&&d.policies)pol.innerHTML=d.policies.map(function(p){return '<span style="display:inline-flex; align-items:center; gap:9px; padding:9px 16px; border-radius:999px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); font-size:13px; font-weight:600; color:#b7afc0;"><span style="width:6px; height:6px; border-radius:50%; background:'+T.accent+';"></span>'+esc(p)+'</span>';}).join('');
     var lb=document.getElementById('location-body');
     if(lb){
       var loc=d.location||{},c=d.contact||{};
