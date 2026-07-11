@@ -1,0 +1,45 @@
+{
+  "brand": "Dusk RVA",
+  "menu": [
+    {
+      "category": "Shisha Flavors",
+      "type": "brands",
+      "accent": "primary",
+      "price": "$35",
+      "priceNote": "All hookah flavors",
+      "brands": [
+        { "name": "Al Fakher", "flavors": ["Double Apple", "Blueberry", "Mint", "Watermelon", "Grape", "Orange", "Strawberry", "Cherry", "Mango", "Kiwi", "Melon", "Pine Apple", "Guava", "Vanilla"] },
+        { "name": "Adaya", "flavors": ["Love 66", "Lady Killer", "SkyFall", "Ice on the Rocks", "Madagascar night", "Baku Nights","Jamaican Vibes", "Blue MLN"] },
+        { "name": "Starbuzz", "flavors": ["Blue Mist", "Pirate's Cave", "Safari Melon Dew", "Sex on the Beach", "Mighty Freeze"] },
+        { "name": "Afzal", "flavors": ["Pan Rasna", "Ambrosia", "Spiced Chai", "Blueberry Muffin"] }
+      ]
+    },
+    {
+      "category": "Drinks & Tea",
+      "type": "items",
+      "accent": "gold",
+      "items": [
+        { "name": "Tea Cup",  "price": "$3" },
+        { "name": "Tea Pot",  "price": "$6" },
+        { "name": "Water",  "price": "$2" },
+        { "name": "Soft Drinks",  "price": "$2" }
+      ]
+    }
+  ],
+  "hours": [
+    { "days": "Mon – Thu", "time": "5 PM – 1 AM", "highlight": false },
+    { "days": "Fri – Sat", "time": "5 PM – 3 AM", "highlight": true },
+    { "days": "Sunday", "time": "5 PM – 12 AM", "highlight": false }
+  ],
+  "location": {
+    "name": "Dusk RVA",
+    "addressLines": ["123 W Broad St", "Richmond, VA 23220"],
+    "mapsQuery": "Dusk RVA, 123 W Broad St, Richmond, VA 23220"
+  },
+  "contact": {
+    "reserveNote": "Call or text us to reserve a table",
+    "phoneDisplay": "(804) 555-0100",
+    "phoneDial": "+18045550100",
+    "email": "hello@duskrva.com"
+  }
+}

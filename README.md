@@ -1,49 +1,46 @@
-# HAZE Hookah Lounge — Website Design Options
+# Dusk RVA — Hookah Lounge
 
-Static design options for client review. Each option is a self-contained folder
-(HTML + fonts + images) that can be hosted on GitHub Pages.
+Static one-page website for Dusk RVA, hosted on GitHub Pages.
 
-## Options
-
-| Folder | Option | Palette |
-|--------|--------|---------|
-| [`design-1/`](design-1/) | 1A | Gold × Magenta Neon |
-| [`design-2/`](design-2/) | 1B | Gold × Electric Cyan |
-
-Both were exported from a Claude Design canvas and split into standalone pages.
-The root [`index.html`](index.html) is a landing page linking to every option.
+**Live:** https://tinsae-yb.github.io/lounge/
 
 ## Structure
 
 ```
 .
-├── index.html          # landing page — links to all options
-├── design-1/
-│   ├── index.html
-│   └── assets/         # fonts (woff2) + hero image
-└── design-2/
-    ├── index.html
-    └── assets/
+├── index.html      # the site
+├── data.json       # all editable content (menu, hours, location, contact)
+└── assets/         # fonts (woff2) + hero image
 ```
 
+The page renders its menu, hours, location, and contact details from
+`data.json` at load time — so **updating content means editing `data.json`
+only**, no HTML changes.
+
+## Editing content (`data.json`)
+
+- **menu** — array of categories, each with `category`, `accent`
+  (`primary` | `gold`), and `items`. Each item has `name`, `description`,
+  `price`, and `special` (set `true` + a `badge` label to flag a house item).
+- **hours** — array of `{ days, time, highlight }`. `highlight: true` accents
+  the row (e.g. weekend hours).
+- **location** — `addressLines` (array of lines) and `mapsQuery` (what the
+  address link searches for). Clicking the address opens Apple Maps on Apple
+  devices and Google Maps everywhere else.
+- **contact** — `reserveNote`, `phoneDisplay` / `phoneDial` (tap to call or
+  text), and `email` (tap to email).
+
 ## Preview locally
+
+`data.json` is loaded via `fetch`, which needs an HTTP server (opening the
+file directly with `file://` will not load the content):
 
 ```bash
 python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-## Hosting on GitHub Pages
+## Deployment
 
-1. Push this repo to GitHub.
-2. Settings → Pages → deploy from branch (root).
-3. Share links:
-   - Landing: `https://<user>.github.io/<repo>/`
-   - Option 1A: `https://<user>.github.io/<repo>/design-1/`
-   - Option 1B: `https://<user>.github.io/<repo>/design-2/`
-
-## Adding alternatives
-
-Duplicate a `design-N/` folder, adjust colors/layout, and add a card to
-`index.html`. Keeping each option in its own folder means every variant gets a
-clean, shareable URL.
+Pushing to `main` auto-deploys via GitHub Pages
+(Settings → Pages → Deploy from a branch → `main` / root).
